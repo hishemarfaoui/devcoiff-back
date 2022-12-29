@@ -21,6 +21,7 @@ public class Service implements Serializable {
     private Integer id_ser;
     private String nomService ;
     private String description ;
+    @Lob
     private String img ;
 
     @OneToMany (mappedBy = "service" , cascade = CascadeType.ALL)

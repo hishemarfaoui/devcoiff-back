@@ -19,7 +19,7 @@ public class Rendez_vousServiceImpl implements IRendez_vous{
 
 
     @Override
-    public Rendez_vous ajoutRV(Rendez_vous rendez_vous, Integer idcoif, Integer idcl) {
+    public Rendez_vous ajoutRV(Rendez_vous rendez_vous, Long idcoif, Long idcl) {
         Utilisateur client = utilisateurRepository.findById(idcl).orElse(null);
         Utilisateur coiffeur = utilisateurRepository.findById(idcoif).orElse(null);
 
@@ -52,16 +52,23 @@ public class Rendez_vousServiceImpl implements IRendez_vous{
     }
 
     @Override
-    public void accepterRV(Rendez_vous rendez_vous) {
-        rendez_vous.setStatus(Rendez_vous.Etat.Accepted);
-        modifierRV(rendez_vous);
-
+    public Rendez_vous accepterRV(Integer idRdv) {
+        Rendez_vous rdv = rvRepository.findById(idRdv).orElse(null);
+        assert rdv != null;
+        rdv.setStatus(Rendez_vous.Etat.Accepted);
+        return rvRepository.save(rdv);
     }
 
     @Override
-    public void reffuserRV(Rendez_vous rendez_vous) {
-        rendez_vous.setStatus(Rendez_vous.Etat.Refused);
-        modifierRV(rendez_vous);
+    public Rendez_vous reffuserRV(Integer idRdv) {
+        Rendez_vous rdv = rvRepository.findById(idRdv).orElse(null);
+        assert rdv != null;
+        rdv.setStatus(Rendez_vous.Etat.Refused);
+        return rvRepository.save(rdv);
 
+    }
+    @Override
+    public List<Rendez_vous> findDispo(Integer idCoiff){
+        return this.rvRepository.findDispo(idCoiff);
     }
 }

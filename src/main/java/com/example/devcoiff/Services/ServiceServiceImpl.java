@@ -15,7 +15,7 @@ public class ServiceServiceImpl implements IService{
     @Autowired
     UtilisateurRepository userRepo;
     @Override
-    public Service ajoutService(Service service, Integer idCoiff) {
+    public Service ajoutService(Service service, Long idCoiff) {
 
         Utilisateur user = userRepo.findById(idCoiff).orElse(null);
         assert user != null;

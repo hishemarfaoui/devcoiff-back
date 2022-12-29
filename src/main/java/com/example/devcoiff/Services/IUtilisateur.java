@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface IUtilisateur {
     public Utilisateur ajoutUtilisateur(Utilisateur utilisateur, int id);
-    public void modifierUtlisateur(Utilisateur utilisateur);
-    public void supprimerUtlisateur(Integer id);
-    public Utilisateur getUtilisateur(Integer id);
+    public Utilisateur modifierUtlisateur(Utilisateur utilisateur);
+    public void supprimerUtlisateur(Long id);
+    public Utilisateur getUtilisateur(Long id);
     public List<Utilisateur> getAllUtilisateur();
 
-    public List<com.example.devcoiff.Entities.Service> getServicesByUser(Integer idCoiff);
+    public List<com.example.devcoiff.Entities.Service> getServicesByUser(Long idCoiff);
 }

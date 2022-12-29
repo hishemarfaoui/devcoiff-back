@@ -10,7 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -23,6 +28,10 @@ import java.util.List;
 public class DevCoiffApplication implements CommandLineRunner {
     private IFonction iFonction;
     private IUtilisateur iUtilisateur;
+
+
+    private PasswordEncoder bcryptPasswordEncoder;
+
     @Autowired
     UtilisateurRepository utilisateurRepository;
 
@@ -63,6 +72,7 @@ public class DevCoiffApplication implements CommandLineRunner {
         e.setRole(Utilisateur.Roles.ROLE_ADMIN);
         e.setUsername("admin");
         e.setPassword("admin");
+        e.setPassword(bcryptPasswordEncoder.encode(e.getPassword()));
 
         List<Utilisateur> listuti =  iUtilisateur.getAllUtilisateur();
         for (Utilisateur utilisateur: listuti) {
@@ -76,6 +86,13 @@ public class DevCoiffApplication implements CommandLineRunner {
         if (!existAdmin){
             utilisateurRepository.save(e);
         }
+
+//        Authentication authentication = authManager
+//                .authenticate(new UsernamePasswordAuthenticationToken
+//                        ("admin","admin"));
+//
+//        String token = tokenService.generateToken(authentication);
+//        System.out.println(token);
 
     }
 

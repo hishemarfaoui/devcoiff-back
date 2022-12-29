@@ -4,6 +4,10 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -18,6 +22,8 @@ public class Message implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_mess;
     private String contenu;
+    private Integer sender;
+    private Date timestamp;
 
    @ManyToOne
    @JoinColumn(name="client_id")

@@ -17,6 +17,7 @@ import java.util.List;
 @Table(name = "Utilisateur")
 
 public class Utilisateur implements Serializable {
+
     public enum Roles {
         ROLE_USER,
         ROLE_ADMIN
@@ -25,7 +26,7 @@ public class Utilisateur implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // @Column(nullable = false)
 //    updatable = false
-    private Integer id_utilis;
+    private Long id_utilis;
     // @Column(nullable = false)
     private String name ;
     // @Column(nullable = false)
