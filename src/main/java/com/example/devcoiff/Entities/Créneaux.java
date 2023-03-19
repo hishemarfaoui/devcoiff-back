@@ -17,6 +17,7 @@ public class Créneaux implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_cre;
+
     private String label ;
 
 

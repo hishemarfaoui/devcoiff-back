@@ -23,6 +23,7 @@ public class Fonction implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_fonction ;
+    @Enumerated(EnumType.STRING)
     private Fonctions nom ;
 
     @OneToMany (mappedBy = "fonction" , cascade = CascadeType.ALL)
