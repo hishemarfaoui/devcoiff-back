@@ -11,7 +11,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/Request")
+@RequestMapping("/request")
 public class RequestController {
     @Autowired
     IRequest iRequest;

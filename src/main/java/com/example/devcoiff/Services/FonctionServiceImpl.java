@@ -19,8 +19,8 @@ public class FonctionServiceImpl implements IFonction{
     }
 
     @Override
-    public void modifierFonction(Fonction fonction) {
-        fonctionRepository.save(fonction);
+    public Fonction modifierFonction(Fonction fonction) {
+       return fonctionRepository.save(fonction);
 
     }
 

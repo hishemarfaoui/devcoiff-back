@@ -68,12 +68,12 @@ public class FonctionController {
     @PutMapping("/update")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseBody
-    public String Mise_A_jours_fonction(@RequestBody Fonction fonction){iFonction.modifierFonction(fonction);
-        return "updated";}
+    public Fonction Mise_A_jours_fonction(@RequestBody Fonction fonction){iFonction.modifierFonction(fonction);
+        return fonction;}
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseBody
-    public String supp_fonction(@PathVariable("id") Integer id){iFonction.supprimerFonction(id);
-        return "removed";}
+    public void supp_fonction(@PathVariable("id") Integer id){
+         iFonction.supprimerFonction(id); ;}
 
 }

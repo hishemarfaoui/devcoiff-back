@@ -16,15 +16,11 @@ import java.util.List;
 @ToString
 public class Fonction implements Serializable {
 
-    public enum Fonctions {
-        client,
-        coiffeur
-    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_fonction ;
-    @Enumerated(EnumType.STRING)
-    private Fonctions nom ;
+    private String nom ;
 
     @OneToMany (mappedBy = "fonction" , cascade = CascadeType.ALL)
     @JsonIgnore

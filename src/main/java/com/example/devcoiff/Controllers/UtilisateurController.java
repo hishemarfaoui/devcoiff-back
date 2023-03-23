@@ -47,8 +47,8 @@ public class UtilisateurController {
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseBody
-    public String supp_utilisateur(@PathVariable("id") Long id){iUtilisateur.supprimerUtlisateur(id);
-        return "removed";}
+    public void supp_utilisateur(@PathVariable("id") Long id){iUtilisateur.supprimerUtlisateur(id);
+       ;}
 
     @GetMapping("/get-service/{idCoiff}")
     @PreAuthorize("hasRole('ROLE_USER')")

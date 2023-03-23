@@ -59,8 +59,8 @@ public class DevCoiffApplication implements CommandLineRunner {
         boolean existAdmin = false;
         Fonction Client = new Fonction();
         Fonction Coiffeur = new Fonction();
-        Coiffeur.setNom(Fonction.Fonctions.coiffeur);
-        Client.setNom(Fonction.Fonctions.client);
+        Client.setNom("client");
+        Coiffeur.setNom("coiffeur");
         if (iFonction.getAllFonction().isEmpty()){
             iFonction.ajoutFonction(Client);
             iFonction.ajoutFonction(Coiffeur);
