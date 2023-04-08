@@ -13,4 +13,6 @@ public interface IFonction {
     public Fonction getFonction(Integer id);
     public List<Fonction> getAllFonction();
     public  List<Map<String,Object>>  getAllNumbersByFunctionType();
+    public Fonction findByNom(String nom);
+
 }

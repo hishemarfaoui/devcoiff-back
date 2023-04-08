@@ -1,11 +1,15 @@
 package com.example.devcoiff.Controllers;
 
 import com.example.devcoiff.Entities.Créneaux;
+import com.example.devcoiff.Entities.Utilisateur;
+import com.example.devcoiff.Repositories.CreneauRepository;
 import com.example.devcoiff.Services.CreneauxServiceImpl;
 import com.example.devcoiff.Services.ICréneau;
+import com.example.devcoiff.Services.IUtilisateur;
 import lombok.AllArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,12 +19,20 @@ import java.util.List;
 @RequestMapping("/creneaux")
 public class CréneauxController {
     @Autowired
-     ICréneau iCréneau;
+    CreneauRepository creneauRepository;
+    @Autowired
+    IUtilisateur iUtilisateur;
+    @Autowired
+    ICréneau iCréneau;
 
-    @PostMapping("/add")
+    @PostMapping("/add/{idCoiff}")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @ResponseBody
-    public Créneaux add_New_Creneau(@RequestBody Créneaux créneaux) {
-       iCréneau.ajoutCreneau(créneaux);
+    public Créneaux add_New_Creneau(@RequestBody Créneaux créneaux ,@PathVariable Long idCoiff) {
+        Utilisateur user =iUtilisateur.getUtilisateur(idCoiff);
+        créneaux.setFournisseurs(user);
+        creneauRepository.save(créneaux);
+
         return créneaux ;
 
 
@@ -28,7 +40,7 @@ public class CréneauxController {
     @GetMapping("/all")
     @ResponseBody
     public List<Créneaux> all_Creneaux(){
-        return iCréneau.getAllCreneau();
+        return creneauRepository.findAll();
     }
 
     @GetMapping("/id/{id}")

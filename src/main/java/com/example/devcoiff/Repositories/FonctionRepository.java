@@ -15,5 +15,6 @@ public interface FonctionRepository extends JpaRepository<Fonction,Integer> {
     @Query(value = "SELECT count(utilisateur.id_utilis) as nombre, fonctions.nom as functionType FROM fonctions JOIN utilisateur ON utilisateur.fonction_id_fonction = fonctions.id_fonction GROUP BY fonctions.nom",nativeQuery = true)
 
    public List<Map<String,Object>> countByFonctionNom();
+    public Fonction findByNom(String nom);
 
 }

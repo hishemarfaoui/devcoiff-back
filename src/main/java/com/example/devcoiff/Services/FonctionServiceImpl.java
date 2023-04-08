@@ -44,4 +44,13 @@ public class FonctionServiceImpl implements IFonction{
     public List<Map<String,Object>>  getAllNumbersByFunctionType() {
         return fonctionRepository.countByFonctionNom();
     }
+
+    @Override
+    public Fonction findByNom(String nom) {
+        Fonction fonction = fonctionRepository.findByNom(nom);
+        if (fonction == null) {
+            return null;
+        }
+        return fonction;
+    }
 }

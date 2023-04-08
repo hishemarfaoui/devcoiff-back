@@ -73,4 +73,8 @@ public class Utilisateur implements Serializable {
     @JoinTable(name = "user_service", joinColumns = @JoinColumn(name = "id_utilis"),inverseJoinColumns = @JoinColumn(name = "id_ser"),
             uniqueConstraints = { @UniqueConstraint(columnNames = { "id_utilis", "id_ser" }) })
     private List<Service> services ;
+
+    @OneToMany (mappedBy = "fournisseurs" , cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Créneaux> créneaux;
 }

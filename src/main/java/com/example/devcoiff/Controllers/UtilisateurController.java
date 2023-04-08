@@ -1,5 +1,6 @@
 package com.example.devcoiff.Controllers;
 
+import com.example.devcoiff.Entities.Créneaux;
 import com.example.devcoiff.Entities.Image;
 import com.example.devcoiff.Entities.Service;
 import com.example.devcoiff.Entities.Utilisateur;
@@ -56,5 +57,12 @@ public class UtilisateurController {
     public List<Service> getServicesByUser(@PathVariable Long idCoiff){
         return iUtilisateur.getServicesByUser(idCoiff);
     }
+    @GetMapping("/get-creneaux/{idCoiff}")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @ResponseBody
+    public List<Créneaux> getCreneauxByUser(@PathVariable Long idCoiff){
+        return iUtilisateur.getCreneauxByUser(idCoiff);
+    }
+
 
 }

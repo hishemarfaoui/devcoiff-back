@@ -65,6 +65,12 @@ public class FonctionController {
     public Fonction GetFonction(@PathVariable("id") Integer id){
         return iFonction.getFonction(id);
     }
+    @GetMapping("/nom/{nom}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @ResponseBody
+    public Fonction GetFonctionbynom(@PathVariable("nom") String nom){
+        return iFonction.findByNom(nom);
+    }
     @PutMapping("/update")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseBody

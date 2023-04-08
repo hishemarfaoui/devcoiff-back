@@ -1,5 +1,6 @@
 package com.example.devcoiff.Services;
 
+import com.example.devcoiff.Entities.Créneaux;
 import com.example.devcoiff.Entities.Fonction;
 import com.example.devcoiff.Entities.Utilisateur;
 import com.example.devcoiff.Repositories.UtilisateurRepository;
@@ -72,5 +73,12 @@ public class UtilisateurServiceImpl implements IUtilisateur{
                  Utilisateur user = utilisateurRepository.findById(idCoiff).orElse(null);
         assert user != null;
         return user.getServices();
+    }
+
+    @Override
+    public List<Créneaux> getCreneauxByUser(Long idCoiff) {
+        Utilisateur user = utilisateurRepository.findById(idCoiff).orElse(null);
+
+        return user.getCréneaux();
     }
 }
