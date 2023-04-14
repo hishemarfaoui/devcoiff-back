@@ -5,10 +5,7 @@ import com.example.devcoiff.Entities.Fonction;
 import com.example.devcoiff.Entities.Request;
 import com.example.devcoiff.Entities.Utilisateur;
 import com.example.devcoiff.Payloads.Mail.Mail;
-import com.example.devcoiff.Services.IFonction;
-import com.example.devcoiff.Services.IRequest;
-import com.example.devcoiff.Services.IUtilisateur;
-import com.example.devcoiff.Services.MailService;
+import com.example.devcoiff.Services.*;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -25,7 +22,7 @@ public class RequestController {
     @Autowired
     IRequest iRequest;
     @Autowired
-    IFonction iFonction;
+    FonctionServiceImpl fonctionService;
     @Autowired
     MailService mailService;
     @Autowired
@@ -40,7 +37,7 @@ public class RequestController {
     @PostMapping("/accept")
     @ResponseBody
     public Request accept_request(@RequestBody Request request) throws MessagingException {
-        Fonction fonction = iFonction.findByNom(request.getRequestFonction());
+        Fonction fonction = fonctionService.findByNom(request.getRequestFonction());
         if (fonction!=null){
             Utilisateur utilisateur = new Utilisateur();
             utilisateur.setEmail(request.getEmail());
@@ -64,7 +61,7 @@ public class RequestController {
         }else{
             Fonction fonction1 = new Fonction();
             fonction1.setNom(request.getRequestFonction());
-            iFonction.ajoutFonction(fonction1);
+            fonctionService.ajoutFonction(fonction1);
             Utilisateur utilisateur1 = new Utilisateur();
             utilisateur1.setEmail(request.getEmail());
             utilisateur1.setFonction(fonction1);
@@ -73,7 +70,7 @@ public class RequestController {
             utilisateur1.setPassword(password);
             iUtilisateur.ajoutUtilisateur(utilisateur1,fonction1.getId_fonction());
             String mailMessage = String.format("Votre password est %s \nVotre username est %s et \nvotre fonction est : %s",
-                    password, utilisateur1.getUsername(), fonction.getNom());
+                    password, utilisateur1.getUsername(), fonction1.getNom());
 
             Mail mail1 = new Mail();
             mail1.setMailAddress(request.getEmail());

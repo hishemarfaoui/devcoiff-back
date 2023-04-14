@@ -16,5 +16,4 @@ public interface FonctionRepository extends JpaRepository<Fonction,Integer> {
 
    public List<Map<String,Object>> countByFonctionNom();
     public Fonction findByNom(String nom);
-
 }

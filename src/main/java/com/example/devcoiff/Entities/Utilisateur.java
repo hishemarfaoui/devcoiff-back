@@ -45,9 +45,13 @@ public class Utilisateur implements Serializable {
     private Roles role ;
     //  @Column(nullable = false)
     private String adresse ;
+    private double latitude;
+    private double longitude;
 
 
-   @OneToMany (mappedBy = "client" , cascade = CascadeType.ALL)
+
+
+    @OneToMany (mappedBy = "client" , cascade = CascadeType.ALL)
    @JsonIgnore
    private List<Rendez_vous> rendez_vous;
 
