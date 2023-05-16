@@ -109,6 +109,11 @@ public class RequestController {
     public Request GetRequest(@PathVariable("id") Long id){
         return  iRequest.getRequest(id);
     }
+    @GetMapping("/count")
+    public Long GetRequest(){
+        return  iRequest.count();
+    }
+
 
     @PutMapping("/update")
     @ResponseBody

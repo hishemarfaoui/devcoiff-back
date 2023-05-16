@@ -1,5 +1,6 @@
 package com.example.devcoiff.Services;
 
+import com.example.devcoiff.DTO.FonctionRendezVousDTO;
 import com.example.devcoiff.Entities.Rendez_vous;
 import com.example.devcoiff.Entities.Utilisateur;
 import com.example.devcoiff.Repositories.RvRepository;
@@ -70,5 +71,10 @@ public class Rendez_vousServiceImpl implements IRendez_vous{
     @Override
     public List<Rendez_vous> findDispo(Integer idCoiff){
         return this.rvRepository.findDispo(idCoiff);
+    }
+
+    @Override
+    public List<FonctionRendezVousDTO> countRendezVousByFonction() {
+        return rvRepository.countRendezVousByFonction();
     }
 }

@@ -14,4 +14,5 @@ public interface IUtilisateur {
 
     public List<com.example.devcoiff.Entities.Service> getServicesByUser(Long idCoiff);
     public List<Créneaux> getCreneauxByUser(Long idCoiff);
+    public long count();
 }

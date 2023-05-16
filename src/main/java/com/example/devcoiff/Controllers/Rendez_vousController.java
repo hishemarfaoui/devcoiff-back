@@ -1,5 +1,6 @@
 package com.example.devcoiff.Controllers;
 
+import com.example.devcoiff.DTO.FonctionRendezVousDTO;
 import com.example.devcoiff.Entities.Message;
 import com.example.devcoiff.Entities.Rendez_vous;
 import com.example.devcoiff.Services.IRendez_vous;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -70,6 +72,11 @@ public class Rendez_vousController {
     @ResponseBody
     public Rendez_vous refuserv(@PathVariable Integer idRdv){
         return  iRendez_vous.reffuserRV(idRdv);
+    }
+    @GetMapping("/stat")
+    public List<FonctionRendezVousDTO> countRendezVousByFonction() {
+
+        return iRendez_vous.countRendezVousByFonction() ;
     }
 
     }

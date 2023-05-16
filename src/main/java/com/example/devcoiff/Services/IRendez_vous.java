@@ -1,5 +1,6 @@
 package com.example.devcoiff.Services;
 
+import com.example.devcoiff.DTO.FonctionRendezVousDTO;
 import com.example.devcoiff.Entities.Message;
 import com.example.devcoiff.Entities.Rendez_vous;
 import com.example.devcoiff.Entities.Utilisateur;
@@ -18,5 +19,7 @@ public interface IRendez_vous {
     Rendez_vous reffuserRV(Integer idRdv);
 
     public List<Rendez_vous> findDispo(Integer idCoiff);
+    public List<FonctionRendezVousDTO> countRendezVousByFonction();
 
-    }
+
+}

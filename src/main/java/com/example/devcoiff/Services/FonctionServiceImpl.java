@@ -53,4 +53,9 @@ public class FonctionServiceImpl implements IFonction{
         }
         return fonction;
     }
+
+    @Override
+    public long count() {
+        return fonctionRepository.count();
+    }
 }

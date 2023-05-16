@@ -81,4 +81,9 @@ public class UtilisateurServiceImpl implements IUtilisateur{
 
         return user.getCréneaux();
     }
+
+    @Override
+    public long count() {
+        return utilisateurRepository.count();
+    }
 }

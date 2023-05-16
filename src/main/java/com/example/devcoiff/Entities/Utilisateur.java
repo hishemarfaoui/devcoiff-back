@@ -45,7 +45,11 @@ public class Utilisateur implements Serializable {
     private Roles role ;
     //  @Column(nullable = false)
     private String adresse ;
+      @Column(nullable = true)
+
     private double latitude;
+    @Column(nullable = true)
+
     private double longitude;
 
 

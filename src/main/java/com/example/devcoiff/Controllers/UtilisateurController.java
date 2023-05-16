@@ -50,6 +50,11 @@ public class UtilisateurController {
     @ResponseBody
     public void supp_utilisateur(@PathVariable("id") Long id){iUtilisateur.supprimerUtlisateur(id);
        ;}
+    @GetMapping("/count")
+    public Long count_utilisateur(){
+        return iUtilisateur.count()
+                ;
+    }
 
     @GetMapping("/get-service/{idCoiff}")
     @PreAuthorize("hasRole('ROLE_USER')")

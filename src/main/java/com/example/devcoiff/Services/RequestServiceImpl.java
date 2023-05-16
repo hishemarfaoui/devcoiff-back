@@ -36,4 +36,9 @@ public class RequestServiceImpl implements IRequest{
     public List<Request> getAllRequest() {
         return requestRepository.findAll();
     }
+
+    @Override
+    public long count() {
+        return requestRepository.count();
+    }
 }

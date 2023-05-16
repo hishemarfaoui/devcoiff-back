@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -30,10 +31,13 @@ public class FonctionController {
     }
 
     @GetMapping("/all")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseBody
-    public List<Fonction> all_Fonction(){
+    public List<Fonction> all_Fonction() {
         return iFonction.getAllFonction();
+    }
+    @GetMapping("/count")
+    public Long Fonction(){
+        return iFonction.count();
     }
 
     @GetMapping("/statistics")

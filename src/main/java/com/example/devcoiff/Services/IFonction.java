@@ -14,5 +14,7 @@ public interface IFonction {
     public List<Fonction> getAllFonction();
     public  List<Map<String,Object>>  getAllNumbersByFunctionType();
     public Fonction findByNom(String nom);
+    public long count();
+
 
 }

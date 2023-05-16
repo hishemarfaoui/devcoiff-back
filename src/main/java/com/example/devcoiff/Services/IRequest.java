@@ -11,4 +11,6 @@ public interface IRequest {
     public void supprimerRequest(Long id);
     public Request getRequest(Long id);
     public List<Request> getAllRequest();
+    public long count();
+
 }
