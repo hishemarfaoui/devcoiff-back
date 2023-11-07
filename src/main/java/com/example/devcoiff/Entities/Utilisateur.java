@@ -85,4 +85,7 @@ public class Utilisateur implements Serializable {
     @OneToMany (mappedBy = "fournisseurs" , cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Créneaux> créneaux;
+    @OneToMany (mappedBy = "utilisateur" , cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Commentaire> commentaires;
 }

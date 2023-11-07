@@ -28,7 +28,7 @@ public class UtilisateurController {
             return  utilisateur;
         }
     @GetMapping("/all")
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     @ResponseBody
     public List<Utilisateur> all_Utilisateur(){
         return iUtilisateur.getAllUtilisateur();
