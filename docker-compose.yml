@@ -2,11 +2,16 @@ version: "3.8"
 
 services:
   mysqldb:
-    image: mysql:5.7
+    image: mysql
+    container_name: mysqldb
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: hichem123 # Remplacez par le mot de passe root souhaité
-      MYSQL_DATABASE: coiffure # Remplacez par le nom de la base de données souhaité
+      - MYSQL_DATABASE=coiffure
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=hichem123
+
+
+
 
 
     ports:
@@ -17,18 +22,28 @@ services:
   app:
     depends_on:
       - mysqldb
-    build: ./
+    build: .
     restart: on-failure
     ports:
       - 7071:7071
     environment:
-      SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url"  : "jdbc:mysql://localhost:3306/coiffure?createDatabaseIfNotExist=true",
-        "spring.datasource.username" : "root",
-        "spring.datasource.password" : "hichem123",
-        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-        "spring.jpa.hibernate.ddl-auto" : "update"
-      }'
+      SPRING_APPLICATION_JSON: >
+        {
+          "spring.datasource.url": "jdbc:mysql://mysqldb:3306/coiffure?createDatabaseIfNotExist=true",
+          "spring.datasource.username": "root",
+          "spring.datasource.password": "hichem123",
+          "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL5InnoDBDialect",
+          "spring.jpa.hibernate.ddl-auto": "create"
+        }
+
+   
+
+
+
+
+
+
+
     volumes:
       - .m2:/root/.m2
     stdin_open: true
